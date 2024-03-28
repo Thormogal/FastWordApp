@@ -14,6 +14,7 @@
 		CE39009C2BB572E3008D5819 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE39009B2BB572E3008D5819 /* Base */; };
 		CE39009E2BB572E7008D5819 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE39009D2BB572E7008D5819 /* Assets.xcassets */; };
 		CE3900A12BB572E7008D5819 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE3900A02BB572E7008D5819 /* Base */; };
+		CE3900AC2BB5B79A008D5819 /* PreciseGameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3900AB2BB5B79A008D5819 /* PreciseGameTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		CE39009D2BB572E7008D5819 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE3900A02BB572E7008D5819 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE3900A22BB572E7008D5819 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE3900AB2BB5B79A008D5819 /* PreciseGameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreciseGameTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 		CE3900AA2BB57340008D5819 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CE3900AB2BB5B79A008D5819 /* PreciseGameTimer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 			files = (
 				A90198052BB59FDE00D4437E /* GameViewController.swift in Sources */,
 				CE3900992BB572E3008D5819 /* ViewController.swift in Sources */,
+				CE3900AC2BB5B79A008D5819 /* PreciseGameTimer.swift in Sources */,
 				CE3900952BB572E3008D5819 /* AppDelegate.swift in Sources */,
 				CE3900972BB572E3008D5819 /* SceneDelegate.swift in Sources */,
 			);

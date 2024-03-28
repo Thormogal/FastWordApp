@@ -7,21 +7,83 @@
 
 import UIKit
 
-class GameViewController: UIViewController {
-
+class GameViewController: UIViewController, UITextFieldDelegate {
+    
     @IBOutlet weak var writeWordTextfield: UITextField!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var writeThisWordLabel: UILabel!
     @IBOutlet weak var pointsCounterLabel: UILabel!
     @IBOutlet weak var wordCounterLabel: UILabel!
+    let gameTimer = PreciseGameTimer(seconds: 5)
+    var originalWords = ["pineapple","strawberry","lingonberry","passion fruit","apple","pear","kiwi","orange","watermelon","cape gooseberry"]
+    var currentWords: [String] = []
+    var currentIndex = 0
+    var timeTakenList: [Int] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        writeWordTextfield.delegate = self
+        writeWordTextfield.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        showNextWord()
+        gameTimer.completion = { [weak self] in
+                self?.timerDidFinish()
+            }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         writeWordTextfield.becomeFirstResponder()
     }
+    
+    func startNewGame() {
+        currentWords = originalWords.shuffled()
+        currentIndex = 0
+        showNextWord()
+        gameTimer.startTimer()
+    }
+    
+    
+    //checks user input and compares it to the word that is shown on the screen.
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        guard currentIndex < currentWords.count else { return }
+        
+        if textField.text?.lowercased() == currentWords[currentIndex].lowercased() {
+            gameTimer.stopTimer()
+            let timeTaken = 5 - gameTimer.timeLeft
+            timeTakenList.append(timeTaken)
+            proceedToNextWord()
+        }
+    }
+    
+    //clear the textfield and prepares for the upcoming word that will be shown
+    func proceedToNextWord() {
+        currentIndex += 1
+        if currentIndex < currentWords.count {
+            showNextWord()
+            gameTimer.startTimer() // resets the timer for the upcoming word
+        } else {
+            // implements the logic to what happens when the list is finished
+            finishGame()
+        }
+    }
+    
+    func timerDidFinish() {
+        // show an alert to the user
+        let alert = UIAlertController(title: "Time's Up!", message: "Too slow, you got 0 points", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+            // proceed to next word when "OK" is pressed.
+            self?.proceedToNextWord()
+        }))
 
+        // Present the alert
+        present(alert, animated: true)
+    }
+    
+    func showNextWord() {
+        writeWordTextfield.text = ""
+    }
+    
+    func finishGame() {
+        //implement logic to what happens when the word list is finished
+    }
 }
