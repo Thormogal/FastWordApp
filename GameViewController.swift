@@ -9,6 +9,13 @@ import UIKit
 
 class GameViewController: UIViewController {
 
+    @IBOutlet weak var pointCounter: UILabel!
+    @IBOutlet weak var wordCounter: UILabel!
+    @IBOutlet weak var writeThisWord: UILabel!
+    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var writeWordHere: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
