@@ -9,7 +9,7 @@ import UIKit
 
 class GameViewController: UIViewController {
 
-    @IBOutlet weak var pointCounter: UILabel!
+    @IBOutlet weak var pointsCounter: UILabel!
     @IBOutlet weak var wordCounter: UILabel!
     @IBOutlet weak var writeThisWord: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
