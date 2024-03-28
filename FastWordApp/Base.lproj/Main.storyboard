@@ -120,6 +120,13 @@
                             <constraint firstItem="CYz-8J-9Gu" firstAttribute="centerX" secondItem="6D9-qA-sme" secondAttribute="centerX" id="zmM-OV-mos"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pointsCounterLabel" destination="ed0-X3-aUl" id="TPB-30-XVx"/>
+                        <outlet property="timerLabel" destination="two-8V-whg" id="pnA-MU-npw"/>
+                        <outlet property="wordCounterLabel" destination="tio-a3-uGR" id="jIi-bw-Ygt"/>
+                        <outlet property="writeThisWordLabel" destination="qAp-9F-sYw" id="ww0-Ov-zyE"/>
+                        <outlet property="writeWordTextfield" destination="pZS-9w-5Ip" id="dT9-JF-Mm5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DZF-Gg-OjL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
