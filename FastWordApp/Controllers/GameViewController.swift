@@ -14,9 +14,9 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var writeThisWordLabel: UILabel!
     @IBOutlet weak var pointsCounterLabel: UILabel!
     @IBOutlet weak var wordCounterLabel: UILabel!
+    
     let gameTimer = PreciseGameTimer(seconds: 5)
-    var originalWords = ["pineapple","strawberry","lingonberry","passion fruit","apple","pear","kiwi","orange","watermelon","cape gooseberry"]
-    var currentWords: [String] = []
+    var wordManager = WordManager()
     var currentIndex = 0
     var timeTakenList: [Int] = []
     
