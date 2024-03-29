@@ -10,7 +10,7 @@ import Foundation
 class WordManager {
     
     var originalWords = ["pineapple","strawberry","lingonberry","passion fruit","apple","pear","kiwi","orange","watermelon","cape gooseberry"]
-    var currentWords: [String]
+    var currentWords: [String] = []
     
     func shuffleWords() {
         currentWords = originalWords.shuffled()
