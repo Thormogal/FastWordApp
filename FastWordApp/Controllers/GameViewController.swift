@@ -26,8 +26,8 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         writeWordTextfield.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         startNewGame()
         gameTimer.completion = { [weak self] in
-                self?.timerDidFinish()
-            }
+            self?.timerDidFinish()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -63,6 +63,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     func proceedToNextWord() {
         currentIndex += 1
         if currentIndex < wordManager.currentWords.count {
+            cleanInput()
             showNextWord()
             gameTimer.startTimer() // resets the timer for the upcoming word
         } else {
@@ -78,19 +79,14 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             // proceed to next word when "OK" is pressed.
             self?.proceedToNextWord()
         }))
-
+        
         // Present the alert
         present(alert, animated: true)
     }
     
     func showNextWord() {
-        cleanInput()
-        if currentIndex < wordManager.currentWords.count {
-               let nextWord = wordManager.currentWords[currentIndex]
-               writeThisWordLabel.text = nextWord
-           } else {
-               finishGame()
-           }
+        let nextWord = wordManager.currentWords[currentIndex]
+        writeThisWordLabel.text = nextWord
     }
     
     func cleanInput() {
