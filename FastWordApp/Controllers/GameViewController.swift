@@ -45,10 +45,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     //checks user input and compares it to the word that is shown on the screen.
     @objc func textFieldDidChange(_ textField: UITextField) {
-        print("Current index: \(currentIndex)")
-        var currentWord = wordManager.currentWords[currentIndex]
-        print("Current word: \(currentWord)")
-        print("Current words: \(wordManager.currentWords.joined(separator: ", "))")
+
         guard currentIndex < wordManager.currentWords.count else { return }
         
         if textField.text?.lowercased() == wordManager.currentWords[currentIndex].lowercased() {
