@@ -15,9 +15,4 @@ class WordManager {
     func shuffleWords() {
         currentWords = originalWords.shuffled()
     }
-    
-    func getNextWord() -> String? {
-        guard !currentWords.isEmpty else { return nil }
-        return currentWords.removeFirst()
-    }
 }
