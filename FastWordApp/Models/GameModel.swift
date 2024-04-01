@@ -17,4 +17,9 @@ class GameModel {
             currentIndex = 0
         }
     
+    func checkAnswer(_ answer: String) -> Bool {
+        guard currentIndex < wordManager.currentWords.count else { return false }
+        return answer.lowercased() == wordManager.currentWords[currentIndex].lowercased()
+    }
+    
 }
