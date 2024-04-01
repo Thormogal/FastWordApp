@@ -16,9 +16,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var wordCounterLabel: UILabel!
     
     let gameTimer = PreciseGameTimer(seconds: 5)
-    var wordManager = WordManager()
-    var currentIndex = 0
-    var timeTakenList: [Int] = []
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
