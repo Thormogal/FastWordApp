@@ -16,9 +16,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var wordCounterLabel: UILabel!
     
     let gameTimer = PreciseGameTimer(seconds: 5)
-    var wordManager = WordManager()
-    var currentIndex = 0
-    var timeTakenList: [Int] = []
+    let gameModel = GameModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,38 +34,29 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     }
     
     func startNewGame() {
-        wordManager.shuffleWords()
-        currentIndex = 0
-        showNextWord()
-        gameTimer.startTimer()
+        gameModel.startNewGame()
+        proceedToNextWord()
     }
-    
+
     
     //checks user input and compares it to the word that is shown on the screen.
     @objc func textFieldDidChange(_ textField: UITextField) {
-        print("Current index: \(currentIndex)")
-        var currentWord = wordManager.currentWords[currentIndex]
-        print("Current word: \(currentWord)")
-        print("Current words: \(wordManager.currentWords.joined(separator: ", "))")
-        guard currentIndex < wordManager.currentWords.count else { return }
+        guard let answer = textField.text else { return }
         
-        if textField.text?.lowercased() == wordManager.currentWords[currentIndex].lowercased() {
+        if gameModel.checkAnswer(answer) {
             gameTimer.stopTimer()
             let timeTaken = 5 - gameTimer.timeLeft
-            timeTakenList.append(timeTaken)
+            gameModel.timeTakenList.append(timeTaken)
             proceedToNextWord()
         }
     }
     
-    //clear the textfield and prepares for the upcoming word that will be shown
     func proceedToNextWord() {
-        currentIndex += 1
-        if currentIndex < wordManager.currentWords.count {
+        if let nextWord = gameModel.getNextWord() {
+            writeThisWordLabel.text = nextWord
             cleanInput()
-            showNextWord()
             gameTimer.startTimer() // resets the timer for the upcoming word
         } else {
-            // implements the logic to what happens when the list is finished
             finishGame()
         }
     }
@@ -80,13 +69,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             self?.proceedToNextWord()
         }))
         
-        // Present the alert
         present(alert, animated: true)
-    }
-    
-    func showNextWord() {
-        let nextWord = wordManager.showNextWord(at: currentIndex) 
-                writeThisWordLabel.text = nextWord
     }
     
     func cleanInput() {
