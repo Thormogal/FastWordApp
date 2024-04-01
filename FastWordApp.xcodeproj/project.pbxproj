@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A90198052BB59FDE00D4437E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90198042BB59FDE00D4437E /* GameViewController.swift */; };
+		A90198092BB6BD6900D4437E /* WordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90198082BB6BD6900D4437E /* WordManager.swift */; };
 		CE3900952BB572E3008D5819 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3900942BB572E3008D5819 /* AppDelegate.swift */; };
 		CE3900972BB572E3008D5819 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3900962BB572E3008D5819 /* SceneDelegate.swift */; };
 		CE3900992BB572E3008D5819 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3900982BB572E3008D5819 /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		A90198042BB59FDE00D4437E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		A90198082BB6BD6900D4437E /* WordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordManager.swift; sourceTree = "<group>"; };
 		CE3900912BB572E3008D5819 /* FastWordApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastWordApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3900942BB572E3008D5819 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE3900962BB572E3008D5819 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				CE3900AB2BB5B79A008D5819 /* PreciseGameTimer.swift */,
+				A90198082BB6BD6900D4437E /* WordManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 				A90198052BB59FDE00D4437E /* GameViewController.swift in Sources */,
 				CE3900992BB572E3008D5819 /* ViewController.swift in Sources */,
 				CE3900AC2BB5B79A008D5819 /* PreciseGameTimer.swift in Sources */,
+				A90198092BB6BD6900D4437E /* WordManager.swift in Sources */,
 				CE3900952BB572E3008D5819 /* AppDelegate.swift in Sources */,
 				CE3900972BB572E3008D5819 /* SceneDelegate.swift in Sources */,
 			);
