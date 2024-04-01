@@ -24,6 +24,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         writeWordTextfield.delegate = self
         writeWordTextfield.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        wordManager.shuffleWords()
         showNextWord()
         gameTimer.completion = { [weak self] in
                 self?.timerDidFinish()
