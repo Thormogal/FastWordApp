@@ -13,23 +13,23 @@ class GameModel {
     var timeTakenList: [Int] = []
     
     func startNewGame() {
-            wordManager.shuffleWords()
-            currentIndex = 0
-        }
+        wordManager.shuffleWords()
+        currentIndex = 0
+    }
     
     func checkAnswer(_ answer: String) -> Bool {
         guard currentIndex < wordManager.currentWords.count else { return false }
-            let isCorrect = answer.lowercased() == wordManager.currentWords[currentIndex].lowercased()
-            if isCorrect {
-                currentIndex += 1
-            }
-            return isCorrect
+        let isCorrect = answer.lowercased() == wordManager.currentWords[currentIndex].lowercased()
+        if isCorrect {
+            currentIndex += 1
+        }
+        return isCorrect
     }
     
     func getNextWord() -> String? {
         guard let nextWord = wordManager.showNextWord(at: currentIndex) else {
-                return nil
-            }
-            return nextWord
+            return nil
         }
+        return nextWord
+    }
 }

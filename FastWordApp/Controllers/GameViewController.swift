@@ -37,19 +37,18 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         gameModel.startNewGame()
         proceedToNextWord()
     }
-    
+
     
     //checks user input and compares it to the word that is shown on the screen.
     @objc func textFieldDidChange(_ textField: UITextField) {
         guard let answer = textField.text else { return }
-    
-            
-            if gameModel.checkAnswer(answer) {
-                gameTimer.stopTimer()
-                let timeTaken = 5 - gameTimer.timeLeft
-                gameModel.timeTakenList.append(timeTaken)
-                proceedToNextWord()
-            }
+        
+        if gameModel.checkAnswer(answer) {
+            gameTimer.stopTimer()
+            let timeTaken = 5 - gameTimer.timeLeft
+            gameModel.timeTakenList.append(timeTaken)
+            proceedToNextWord()
+        }
     }
     
     func proceedToNextWord() {
