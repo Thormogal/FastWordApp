@@ -16,8 +16,8 @@ class WordManager {
         currentWords = originalWords.shuffled()
     }
     
-    func getNextWord() -> String? {
-        guard !currentWords.isEmpty else { return nil }
-        return currentWords.removeFirst()
-    }
+    func showNextWord(at index: Int) -> String? {
+            guard index < currentWords.count else { return nil }
+            return currentWords[index]
+        }
 }

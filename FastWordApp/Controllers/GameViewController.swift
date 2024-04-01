@@ -24,11 +24,10 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         writeWordTextfield.delegate = self
         writeWordTextfield.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-        wordManager.shuffleWords()
-        showNextWord()
+        startNewGame()
         gameTimer.completion = { [weak self] in
-                self?.timerDidFinish()
-            }
+            self?.timerDidFinish()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,6 +45,10 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     //checks user input and compares it to the word that is shown on the screen.
     @objc func textFieldDidChange(_ textField: UITextField) {
+        print("Current index: \(currentIndex)")
+        var currentWord = wordManager.currentWords[currentIndex]
+        print("Current word: \(currentWord)")
+        print("Current words: \(wordManager.currentWords.joined(separator: ", "))")
         guard currentIndex < wordManager.currentWords.count else { return }
         
         if textField.text?.lowercased() == wordManager.currentWords[currentIndex].lowercased() {
@@ -60,6 +63,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     func proceedToNextWord() {
         currentIndex += 1
         if currentIndex < wordManager.currentWords.count {
+            cleanInput()
             showNextWord()
             gameTimer.startTimer() // resets the timer for the upcoming word
         } else {
@@ -75,17 +79,18 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             // proceed to next word when "OK" is pressed.
             self?.proceedToNextWord()
         }))
-
+        
         // Present the alert
         present(alert, animated: true)
     }
     
     func showNextWord() {
-        if let nextWord = wordManager.getNextWord() {
+        let nextWord = wordManager.showNextWord(at: currentIndex) 
                 writeThisWordLabel.text = nextWord
-            } else {
-                finishGame()
-            }
+    }
+    
+    func cleanInput() {
+        writeWordTextfield.text = ""
     }
     
     func finishGame() {
