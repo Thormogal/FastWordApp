@@ -16,7 +16,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var wordCounterLabel: UILabel!
     
     let gameTimer = PreciseGameTimer(seconds: 5)
-
+    let gameModel = GameModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +34,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     }
     
     func startNewGame() {
-        wordManager.shuffleWords()
-        currentIndex = 0
+        gameModel.startNewGame()
         showNextWord()
         gameTimer.startTimer()
     }

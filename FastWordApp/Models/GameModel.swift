@@ -12,6 +12,9 @@ class GameModel {
     var currentIndex = 0
     var timeTakenList: [Int] = []
     
-    
+    func startNewGame() {
+            wordManager.shuffleWords()
+            currentIndex = 0
+        }
     
 }
