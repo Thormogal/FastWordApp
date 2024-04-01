@@ -81,11 +81,16 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     }
     
     func showNextWord() {
+        cleanInput()
         if let nextWord = wordManager.getNextWord() {
                 writeThisWordLabel.text = nextWord
             } else {
                 finishGame()
             }
+    }
+    
+    func cleanInput() {
+        writeWordTextfield.text = ""
     }
     
     func finishGame() {
