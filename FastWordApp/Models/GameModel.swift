@@ -19,7 +19,17 @@ class GameModel {
     
     func checkAnswer(_ answer: String) -> Bool {
         guard currentIndex < wordManager.currentWords.count else { return false }
-        return answer.lowercased() == wordManager.currentWords[currentIndex].lowercased()
+            let isCorrect = answer.lowercased() == wordManager.currentWords[currentIndex].lowercased()
+            if isCorrect {
+                currentIndex += 1
+            }
+            return isCorrect
     }
     
+    func getNextWord() -> String? {
+        guard let nextWord = wordManager.showNextWord(at: currentIndex) else {
+                return nil
+            }
+            return nextWord
+        }
 }

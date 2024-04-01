@@ -35,33 +35,29 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     func startNewGame() {
         gameModel.startNewGame()
-        showNextWord()
-        gameTimer.startTimer()
+        proceedToNextWord()
     }
     
     
     //checks user input and compares it to the word that is shown on the screen.
     @objc func textFieldDidChange(_ textField: UITextField) {
-
         guard let answer = textField.text else { return }
-        
-        if gameModel.checkAnswer(answer) {
-            gameTimer.stopTimer()
-            let timeTaken = 5 - gameTimer.timeLeft
-            gameModel.timeTakenList.append(timeTaken)
-            proceedToNextWord()
-        }
+    
+            
+            if gameModel.checkAnswer(answer) {
+                gameTimer.stopTimer()
+                let timeTaken = 5 - gameTimer.timeLeft
+                gameModel.timeTakenList.append(timeTaken)
+                proceedToNextWord()
+            }
     }
     
-    //clear the textfield and prepares for the upcoming word that will be shown
     func proceedToNextWord() {
-        currentIndex += 1
-        if currentIndex < wordManager.currentWords.count {
+        if let nextWord = gameModel.getNextWord() {
+            writeThisWordLabel.text = nextWord
             cleanInput()
-            showNextWord()
             gameTimer.startTimer() // resets the timer for the upcoming word
         } else {
-            // implements the logic to what happens when the list is finished
             finishGame()
         }
     }
@@ -74,13 +70,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             self?.proceedToNextWord()
         }))
         
-        // Present the alert
         present(alert, animated: true)
-    }
-    
-    func showNextWord() {
-        let nextWord = wordManager.showNextWord(at: currentIndex) 
-                writeThisWordLabel.text = nextWord
     }
     
     func cleanInput() {
