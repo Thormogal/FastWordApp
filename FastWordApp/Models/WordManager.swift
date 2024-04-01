@@ -15,4 +15,9 @@ class WordManager {
     func shuffleWords() {
         currentWords = originalWords.shuffled()
     }
+    
+    func showNextWord(at index: Int) -> String? {
+            guard index < currentWords.count else { return nil }
+            return currentWords[index]
+        }
 }

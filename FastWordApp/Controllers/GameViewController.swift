@@ -85,8 +85,8 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     }
     
     func showNextWord() {
-        let nextWord = wordManager.currentWords[currentIndex]
-        writeThisWordLabel.text = nextWord
+        let nextWord = wordManager.showNextWord(at: currentIndex) 
+                writeThisWordLabel.text = nextWord
     }
     
     func cleanInput() {
