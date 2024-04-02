@@ -7,10 +7,24 @@
 
 import Foundation
 
+protocol GameModelDelegate: AnyObject {
+    func scoreDidUpdate(to newScore: Int)
+}
+
 class GameModel {
+    //var score = 0
+    weak var delegate: GameModelDelegate?
     var wordManager = WordManager()
     var currentIndex = 0
     var timeTakenList: [Int] = []
+    
+    
+    var score: Int = 0 {
+        didSet {
+            UserDefaults.standard.set(score, forKey: "SavedScore")
+            delegate?.scoreDidUpdate(to: score)
+        }
+    }
     
     func startNewGame() -> String? {
         wordManager.shuffleWords()
