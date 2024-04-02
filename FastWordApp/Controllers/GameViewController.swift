@@ -26,7 +26,10 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         gameTimer.completion = { [weak self] in
             self?.timerDidFinish()
         }
+        gameTimer.timeUpdate = { [weak self] timeLeft in
+            self?.timerLabel.text = "\(timeLeft)"}
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

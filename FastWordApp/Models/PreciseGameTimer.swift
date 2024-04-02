@@ -11,6 +11,7 @@ class PreciseGameTimer {
     var startTime: Date?
     var timer: Timer?
     var totalSeconds: Int
+    var timeUpdate: ((Int) -> Void)?
     var completion: (() -> Void)?
     
     var timeLeft: Int {
@@ -39,6 +40,8 @@ class PreciseGameTimer {
         if elapsedSeconds >= totalSeconds {
             completion?()
             stopTimer()
+        } else {
+            timeUpdate?(totalSeconds - elapsedSeconds)
         }
     }
 }
