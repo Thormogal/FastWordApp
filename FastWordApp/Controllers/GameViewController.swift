@@ -57,6 +57,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     func proceedToNextWord() {
         if let nextWord = gameModel.getNextWord() {
             writeThisWordLabel.text = nextWord
+            updateWordCounterLabel()
             cleanInput()
             gameTimer.startTimer() // resets the timer for the upcoming word
         } else {
