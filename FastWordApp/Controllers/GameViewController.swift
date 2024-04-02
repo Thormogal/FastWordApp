@@ -34,8 +34,11 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     }
     
     func startNewGame() {
-        gameModel.startNewGame()
-        proceedToNextWord()
+        let firstWord = gameModel.startNewGame()
+        writeThisWordLabel.text = firstWord
+        gameTimer.startTimer()
+        updateWordCounterLabel()
+        cleanInput()
     }
 
     
@@ -66,6 +69,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         let alert = UIAlertController(title: "Time's Up!", message: "Too slow, you got 0 points", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
             // proceed to next word when "OK" is pressed.
+            self?.increaseIndex()
             self?.proceedToNextWord()
         }))
         
@@ -75,6 +79,16 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     func cleanInput() {
         writeWordTextfield.text = ""
     }
+    
+    func increaseIndex() {
+        gameModel.increaseIndex()
+    }
+    
+    func updateWordCounterLabel() {
+            let currentWordNumber = gameModel.currentIndex + 1
+            let totalWordsCount = gameModel.wordManager.currentWords.count
+            wordCounterLabel.text = "\(currentWordNumber)/\(totalWordsCount)"
+        }
     
     func finishGame() {
         //implement logic to what happens when the word list is finished

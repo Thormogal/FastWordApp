@@ -12,18 +12,27 @@ class GameModel {
     var currentIndex = 0
     var timeTakenList: [Int] = []
     
-    func startNewGame() {
+    func startNewGame() -> String? {
         wordManager.shuffleWords()
         currentIndex = 0
+        if !wordManager.currentWords.isEmpty {
+                return wordManager.currentWords[0]
+            } else {
+                return nil
+            }
     }
     
     func checkAnswer(_ answer: String) -> Bool {
         guard currentIndex < wordManager.currentWords.count else { return false }
         let isCorrect = answer.lowercased() == wordManager.currentWords[currentIndex].lowercased()
         if isCorrect {
-            currentIndex += 1
+            increaseIndex()
         }
         return isCorrect
+    }
+    
+    func increaseIndex() {
+        currentIndex += 1
     }
     
     func getNextWord() -> String? {
