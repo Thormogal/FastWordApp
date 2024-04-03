@@ -23,13 +23,19 @@ class LeaderboardTableViewCell: UITableViewCell {
 class LeaderboardController: UITableViewController {
     
     
-    var highScores = [1, 2, 4, 3, 5, 9, 10, 7, 8, 6]
+    var highScores: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "LeaderboardTableViewCell", bundle: nil), forCellReuseIdentifier: "HighscoreCell")
-        highScores.sort(by: >)
+        loadHighScores()
         tableView.tableHeaderView = createTableHeaderView()
+    }
+    
+    func loadHighScores() {
+        if let savedHighScores = UserDefaults.standard.array(forKey: "HighScores") as? [Int] {
+            highScores = savedHighScores
+        }
     }
     
     func createTableHeaderView() -> UIView {
