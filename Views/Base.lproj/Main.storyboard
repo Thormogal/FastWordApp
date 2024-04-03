@@ -48,6 +48,9 @@
                                         <rect key="frame" x="0.0" y="50.333333333333314" width="373" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Highscore" cornerStyle="large"/>
+                                        <connections>
+                                            <action selector="highscoreButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2aE-wh-Rgm"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -139,7 +142,7 @@
     </scenes>
     <resources>
         <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

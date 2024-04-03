@@ -17,6 +17,9 @@
 		CE39009E2BB572E7008D5819 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE39009D2BB572E7008D5819 /* Assets.xcassets */; };
 		CE3900A12BB572E7008D5819 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE3900A02BB572E7008D5819 /* Base */; };
 		CE3900AC2BB5B79A008D5819 /* PreciseGameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3900AB2BB5B79A008D5819 /* PreciseGameTimer.swift */; };
+		CE98B3CF2BBD441500794E0A /* HighscoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE98B3CE2BBD441500794E0A /* HighscoreView.xib */; };
+		CE98B3D02BBD441500794E0A /* HighscoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98B3CD2BBD441500794E0A /* HighscoreController.swift */; };
+		CE98B3D42BBD468500794E0A /* HighscoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE98B3D32BBD468500794E0A /* HighscoreTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		CE3900A02BB572E7008D5819 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE3900A22BB572E7008D5819 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE3900AB2BB5B79A008D5819 /* PreciseGameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreciseGameTimer.swift; sourceTree = "<group>"; };
+		CE98B3CD2BBD441500794E0A /* HighscoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreController.swift; sourceTree = "<group>"; };
+		CE98B3CE2BBD441500794E0A /* HighscoreView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HighscoreView.xib; sourceTree = "<group>"; };
+		CE98B3D32BBD468500794E0A /* HighscoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HighscoreTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +55,9 @@
 			isa = PBXGroup;
 			children = (
 				CE3900932BB572E3008D5819 /* FastWordApp */,
+				CE3900AA2BB57340008D5819 /* Models */,
+				CE3900A82BB57334008D5819 /* Views */,
+				CE3900A92BB5733A008D5819 /* Controllers */,
 				CE3900922BB572E3008D5819 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,14 +73,9 @@
 		CE3900932BB572E3008D5819 /* FastWordApp */ = {
 			isa = PBXGroup;
 			children = (
-				CE3900AA2BB57340008D5819 /* Models */,
-				CE3900A92BB5733A008D5819 /* Controllers */,
-				CE3900A82BB57334008D5819 /* Views */,
 				CE3900942BB572E3008D5819 /* AppDelegate.swift */,
 				CE3900962BB572E3008D5819 /* SceneDelegate.swift */,
-				CE39009A2BB572E3008D5819 /* Main.storyboard */,
 				CE39009D2BB572E7008D5819 /* Assets.xcassets */,
-				CE39009F2BB572E7008D5819 /* LaunchScreen.storyboard */,
 				CE3900A22BB572E7008D5819 /* Info.plist */,
 			);
 			path = FastWordApp;
@@ -80,6 +84,10 @@
 		CE3900A82BB57334008D5819 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE98B3D32BBD468500794E0A /* HighscoreTableViewCell.xib */,
+				CE98B3CE2BBD441500794E0A /* HighscoreView.xib */,
+				CE39009F2BB572E7008D5819 /* LaunchScreen.storyboard */,
+				CE39009A2BB572E3008D5819 /* Main.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -87,8 +95,9 @@
 		CE3900A92BB5733A008D5819 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CE3900982BB572E3008D5819 /* ViewController.swift */,
 				A90198042BB59FDE00D4437E /* GameViewController.swift */,
+				CE98B3CD2BBD441500794E0A /* HighscoreController.swift */,
+				CE3900982BB572E3008D5819 /* ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -96,9 +105,9 @@
 		CE3900AA2BB57340008D5819 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A901980A2BBB155400D4437E /* GameModel.swift */,
 				CE3900AB2BB5B79A008D5819 /* PreciseGameTimer.swift */,
 				A90198082BB6BD6900D4437E /* WordManager.swift */,
-				A901980A2BBB155400D4437E /* GameModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -163,6 +172,8 @@
 			files = (
 				CE39009E2BB572E7008D5819 /* Assets.xcassets in Resources */,
 				CE3900A12BB572E7008D5819 /* Base in Resources */,
+				CE98B3CF2BBD441500794E0A /* HighscoreView.xib in Resources */,
+				CE98B3D42BBD468500794E0A /* HighscoreTableViewCell.xib in Resources */,
 				CE39009C2BB572E3008D5819 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -177,6 +188,7 @@
 				A90198052BB59FDE00D4437E /* GameViewController.swift in Sources */,
 				CE3900992BB572E3008D5819 /* ViewController.swift in Sources */,
 				CE3900AC2BB5B79A008D5819 /* PreciseGameTimer.swift in Sources */,
+				CE98B3D02BBD441500794E0A /* HighscoreController.swift in Sources */,
 				A90198092BB6BD6900D4437E /* WordManager.swift in Sources */,
 				CE3900952BB572E3008D5819 /* AppDelegate.swift in Sources */,
 				A901980B2BBB155400D4437E /* GameModel.swift in Sources */,
