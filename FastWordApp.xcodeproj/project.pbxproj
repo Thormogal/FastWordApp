@@ -12,14 +12,14 @@
 		A901980B2BBB155400D4437E /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A901980A2BBB155400D4437E /* GameModel.swift */; };
 		CE3900952BB572E3008D5819 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3900942BB572E3008D5819 /* AppDelegate.swift */; };
 		CE3900972BB572E3008D5819 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3900962BB572E3008D5819 /* SceneDelegate.swift */; };
-		CE3900992BB572E3008D5819 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3900982BB572E3008D5819 /* ViewController.swift */; };
+		CE3900992BB572E3008D5819 /* StartPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3900982BB572E3008D5819 /* StartPageController.swift */; };
 		CE39009C2BB572E3008D5819 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE39009B2BB572E3008D5819 /* Base */; };
 		CE39009E2BB572E7008D5819 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE39009D2BB572E7008D5819 /* Assets.xcassets */; };
 		CE3900A12BB572E7008D5819 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE3900A02BB572E7008D5819 /* Base */; };
 		CE3900AC2BB5B79A008D5819 /* PreciseGameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3900AB2BB5B79A008D5819 /* PreciseGameTimer.swift */; };
-		CE98B3CF2BBD441500794E0A /* HighscoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE98B3CE2BBD441500794E0A /* HighscoreView.xib */; };
-		CE98B3D02BBD441500794E0A /* HighscoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98B3CD2BBD441500794E0A /* HighscoreController.swift */; };
-		CE98B3D42BBD468500794E0A /* HighscoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE98B3D32BBD468500794E0A /* HighscoreTableViewCell.xib */; };
+		CE98B3CF2BBD441500794E0A /* LeaderboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE98B3CE2BBD441500794E0A /* LeaderboardView.xib */; };
+		CE98B3D02BBD441500794E0A /* LeaderboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98B3CD2BBD441500794E0A /* LeaderboardController.swift */; };
+		CE98B3D42BBD468500794E0A /* LeaderboardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE98B3D32BBD468500794E0A /* LeaderboardTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,15 +29,15 @@
 		CE3900912BB572E3008D5819 /* FastWordApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastWordApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3900942BB572E3008D5819 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE3900962BB572E3008D5819 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CE3900982BB572E3008D5819 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE3900982BB572E3008D5819 /* StartPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageController.swift; sourceTree = "<group>"; };
 		CE39009B2BB572E3008D5819 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE39009D2BB572E7008D5819 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE3900A02BB572E7008D5819 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE3900A22BB572E7008D5819 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE3900AB2BB5B79A008D5819 /* PreciseGameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreciseGameTimer.swift; sourceTree = "<group>"; };
-		CE98B3CD2BBD441500794E0A /* HighscoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreController.swift; sourceTree = "<group>"; };
-		CE98B3CE2BBD441500794E0A /* HighscoreView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HighscoreView.xib; sourceTree = "<group>"; };
-		CE98B3D32BBD468500794E0A /* HighscoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HighscoreTableViewCell.xib; sourceTree = "<group>"; };
+		CE98B3CD2BBD441500794E0A /* LeaderboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardController.swift; sourceTree = "<group>"; };
+		CE98B3CE2BBD441500794E0A /* LeaderboardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaderboardView.xib; sourceTree = "<group>"; };
+		CE98B3D32BBD468500794E0A /* LeaderboardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaderboardTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +84,8 @@
 		CE3900A82BB57334008D5819 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CE98B3D32BBD468500794E0A /* HighscoreTableViewCell.xib */,
-				CE98B3CE2BBD441500794E0A /* HighscoreView.xib */,
+				CE98B3D32BBD468500794E0A /* LeaderboardTableViewCell.xib */,
+				CE98B3CE2BBD441500794E0A /* LeaderboardView.xib */,
 				CE39009F2BB572E7008D5819 /* LaunchScreen.storyboard */,
 				CE39009A2BB572E3008D5819 /* Main.storyboard */,
 			);
@@ -96,8 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				A90198042BB59FDE00D4437E /* GameViewController.swift */,
-				CE98B3CD2BBD441500794E0A /* HighscoreController.swift */,
-				CE3900982BB572E3008D5819 /* ViewController.swift */,
+				CE98B3CD2BBD441500794E0A /* LeaderboardController.swift */,
+				CE3900982BB572E3008D5819 /* StartPageController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -172,8 +172,8 @@
 			files = (
 				CE39009E2BB572E7008D5819 /* Assets.xcassets in Resources */,
 				CE3900A12BB572E7008D5819 /* Base in Resources */,
-				CE98B3CF2BBD441500794E0A /* HighscoreView.xib in Resources */,
-				CE98B3D42BBD468500794E0A /* HighscoreTableViewCell.xib in Resources */,
+				CE98B3CF2BBD441500794E0A /* LeaderboardView.xib in Resources */,
+				CE98B3D42BBD468500794E0A /* LeaderboardTableViewCell.xib in Resources */,
 				CE39009C2BB572E3008D5819 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,9 +186,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A90198052BB59FDE00D4437E /* GameViewController.swift in Sources */,
-				CE3900992BB572E3008D5819 /* ViewController.swift in Sources */,
+				CE3900992BB572E3008D5819 /* StartPageController.swift in Sources */,
 				CE3900AC2BB5B79A008D5819 /* PreciseGameTimer.swift in Sources */,
-				CE98B3D02BBD441500794E0A /* HighscoreController.swift in Sources */,
+				CE98B3D02BBD441500794E0A /* LeaderboardController.swift in Sources */,
 				A90198092BB6BD6900D4437E /* WordManager.swift in Sources */,
 				CE3900952BB572E3008D5819 /* AppDelegate.swift in Sources */,
 				A901980B2BBB155400D4437E /* GameModel.swift in Sources */,
