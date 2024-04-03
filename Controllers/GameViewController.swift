@@ -7,7 +7,7 @@
 
 //TODO: 1. Vid spela igen så startar inte timern från noll,
 //TODO: 2. Vid start av spel och alert så shufflar den på nytt.
-//TODO: 3. Skriv ut rätt lista i leaderboard
+//TODO: 3. Se till att timer står på 10 men inte startar innan OK i alert. 
 
 import UIKit
 
@@ -61,7 +61,6 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     func showStartGameAlert() {
         let alert = UIAlertController(title: "Are you ready?", message: "Press Ok to start the game.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
-            self?.startNewGame()
             self?.gameTimer.startTimer()
         }))
         
