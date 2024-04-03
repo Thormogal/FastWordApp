@@ -45,11 +45,8 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    //func goToStartPage() {
-      //      self.navigationController?.popToRootViewController(animated: true)
-        //}
-    
     func startNewGame() {
+        gameModel.resetGame()
         let firstWord = gameModel.startNewGame()
         writeThisWordLabel.text = firstWord
         gameTimer.startTimer()
@@ -115,27 +112,38 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         }
     
     func finishGame() {
+        gameModel.saveHighScore() 
         //implement logic to what happens when the word list is finished
         let message = "Spelet är slut! Din poäng blev \(gameModel.score)."
             let alert = UIAlertController(title: "Spelet är slut", message: message, preferredStyle: .alert)
         
             alert.addAction(UIAlertAction(title: "Spela igen", style: .default, handler: { [weak self] _ in
+                self?.gameModel.resetGame()
                 self?.startNewGame()
                 
             }))
         
-    
-        
-       // alert.addAction(UIAlertAction(title: "Gå till startsida", style: .default, handler: { [weak self] _ in
-                
-               // self?.goToStartPage()
-           // }))
+        alert.addAction(UIAlertAction(title: "Gå till startsida", style: .default, handler: { [weak self] _ in
+            self?.goToStartPage()
+            
+        }))
         
             self.present(alert, animated: true, completion: nil)
     }
     
-    
-}
+    func goToStartPage() {
+        //self.navigationController?.popToRootViewController(animated: true)
+        
+        if let navigationController = self.navigationController {
+                navigationController.popToRootViewController(animated: true)
+            } else {
+                // Ako je GameViewController prezentovan modally
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+
+    }
+
 
 extension GameViewController: GameModelDelegate {
     func scoreDidUpdate(to newScore: Int) {

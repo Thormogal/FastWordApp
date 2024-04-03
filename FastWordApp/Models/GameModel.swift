@@ -36,6 +36,26 @@ class GameModel {
             }
     }
     
+    
+    func saveHighScore() {
+    let highScores = UserDefaults.standard.array(forKey: "HighScores") as? [Int] ?? []
+    let updatedHighScores = highScores + [score]
+        
+        let sortedAndReversedHighScores = Array(updatedHighScores.sorted().reversed())
+            UserDefaults.standard.set(sortedAndReversedHighScores, forKey: "HighScores")
+        
+    //UserDefaults.standard.set(updatedHighScores.sorted().reversed(), forKey: "HighScores")
+    }
+    
+    func resetGame() {
+            score = 0
+            currentIndex = 0
+            timeTakenList = []
+           // shuffleWords() 
+        
+    }
+
+    
     func checkAnswer(_ answer: String) -> Bool {
         guard currentIndex < wordManager.currentWords.count else { return false }
         let isCorrect = answer.lowercased() == wordManager.currentWords[currentIndex].lowercased()
