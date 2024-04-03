@@ -5,8 +5,7 @@
 //  Created by Ina Burström on 2024-03-28.
 //
 
-//TODO: 1. Vid spela igen så startar inte timern från noll,
-//TODO: 2. Se till att timer står på 10 men inte startar innan OK i alert.
+//TODO: 1. Uppdatera så att när tiden är ute så säger alerten poängen du fick. 
 
 import UIKit
 
@@ -132,6 +131,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         alert.addAction(UIAlertAction(title: "Spela igen", style: .default, handler: { [weak self] _ in
             self?.gameModel.resetGame()
             self?.startNewGame()
+            self?.showStartGameAlert()
             
         }))
         
