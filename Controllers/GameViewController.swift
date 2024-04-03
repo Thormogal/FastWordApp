@@ -6,8 +6,7 @@
 //
 
 //TODO: 1. Vid spela igen så startar inte timern från noll,
-//TODO: 2. Vid start av spel och alert så shufflar den på nytt.
-//TODO: 3. Se till att timer står på 10 men inte startar innan OK i alert. 
+//TODO: 2. Se till att timer står på 10 men inte startar innan OK i alert.
 
 import UIKit
 
@@ -19,7 +18,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var pointsCounterLabel: UILabel!
     @IBOutlet weak var wordCounterLabel: UILabel!
     
-    let gameTimer = PreciseGameTimer(seconds: 10)
+    let gameTimer = PreciseGameTimer()
     let gameModel = GameModel()
     
     override func viewDidLoad() {
@@ -37,6 +36,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         }
         gameTimer.timeUpdate = { [weak self] timeLeft in
             self?.timerLabel.text = "\(timeLeft)"}
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,6 +52,8 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     func startNewGame() {
         gameModel.resetGame()
+        let initialTime = gameTimer.totalSeconds // Använd det initiala värdet från PreciseGameTimer
+            timerLabel.text = "\(initialTime)"
         let firstWord = gameModel.startNewGame()
         writeThisWordLabel.text = firstWord
         updateWordCounterLabel()
@@ -96,7 +98,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     func timerDidFinish() {
         // show an alert to the user
-        gameModel.score = max(gameModel.score - 1, 0)   // // Minska poängen men inte under 0
+        gameModel.score = max(gameModel.score - 1, 0)   // // Decrease score but not under zero
         let alert = UIAlertController(title: "Time's Up!", message: "Too slow, you got 0 points", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
             // proceed to next word when "OK" is pressed.
@@ -114,8 +116,6 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     func increaseIndex() {
         gameModel.increaseIndex()
     }
-    
-    
     
     func updateWordCounterLabel() {
         let currentWordNumber = gameModel.currentIndex + 1
