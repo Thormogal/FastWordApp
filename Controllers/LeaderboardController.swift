@@ -14,27 +14,27 @@ extension UIColor {
     static let customBlue = UIColor(red: 0/255, green: 60/255, blue: 128/255, alpha: 1)
 }
 
-class HighscoreTableViewCell: UITableViewCell {
+class LeaderboardTableViewCell: UITableViewCell {
     @IBOutlet weak var rankingLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var crownImageView: UIImageView!
 }
 
-class HighscoreController: UITableViewController {
+class LeaderboardController: UITableViewController {
     
     
     var highScores = [1, 2, 4, 3, 5, 9, 10, 7, 8, 6]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "HighscoreTableViewCell", bundle: nil), forCellReuseIdentifier: "HighscoreCell")
+        tableView.register(UINib(nibName: "LeaderboardTableViewCell", bundle: nil), forCellReuseIdentifier: "HighscoreCell")
         highScores.sort(by: >)
         tableView.tableHeaderView = createTableHeaderView()
     }
     
     func createTableHeaderView() -> UIView {
         let headerLabel = UILabel()
-        headerLabel.text = "High Score"
+        headerLabel.text = "Leaderboard"
         headerLabel.textAlignment = .center
         headerLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 28)
         headerLabel.textColor = UIColor.customBlue
@@ -80,7 +80,9 @@ class HighscoreController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HighscoreCell", for: indexPath) as! HighscoreTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HighscoreCell", for: indexPath) as? LeaderboardTableViewCell else {
+            fatalError("The dequeued cell is not an instance of LeaderboardTableViewCell.")
+        }
         let scoreItem = highScores[indexPath.row]
         
         cell.rankingLabel.isHidden = false
