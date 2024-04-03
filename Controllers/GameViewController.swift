@@ -5,6 +5,10 @@
 //  Created by Ina Burström on 2024-03-28.
 //
 
+//TODO: 1. Vid spela igen så startar inte timern från noll,
+//TODO: 2. Vid start av spel och alert så shufflar den på nytt.
+//TODO: 3. Skriv ut rätt lista i leaderboard
+
 import UIKit
 
 class GameViewController: UIViewController, UITextFieldDelegate {
@@ -20,7 +24,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         
-     super.viewDidLoad()
+        super.viewDidLoad()
         gameModel.delegate = self
         
         gameModel.score = UserDefaults.standard.integer(forKey: "SavedScore")
@@ -34,7 +38,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         gameTimer.timeUpdate = { [weak self] timeLeft in
             self?.timerLabel.text = "\(timeLeft)"}
     }
-  
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showStartGameAlert()
@@ -43,10 +47,11 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     
     //func goToStartPage() {
-      //      self.navigationController?.popToRootViewController(animated: true)
-        //}
+    //      self.navigationController?.popToRootViewController(animated: true)
+    //}
     
     func startNewGame() {
+        gameModel.resetGame()
         let firstWord = gameModel.startNewGame()
         writeThisWordLabel.text = firstWord
         updateWordCounterLabel()
@@ -59,11 +64,11 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             self?.startNewGame()
             self?.gameTimer.startTimer()
         }))
-
+        
         self.present(alert, animated: true)
     }
-
-
+    
+    
     
     //checks user input and compares it to the word that is shown on the screen.
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -75,8 +80,6 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             let timeTaken = 5 - gameTimer.timeLeft
             gameModel.timeTakenList.append(timeTaken)
             proceedToNextWord()
-            
-            
             
         }
     }
@@ -116,31 +119,41 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     
     func updateWordCounterLabel() {
-            let currentWordNumber = gameModel.currentIndex + 1
-            let totalWordsCount = gameModel.wordManager.currentWords.count
-            wordCounterLabel.text = "\(currentWordNumber)/\(totalWordsCount)"
-        }
-    
-    func finishGame() {
-        //implement logic to what happens when the word list is finished
-        let message = "Spelet är slut! Din poäng blev \(gameModel.score)."
-            let alert = UIAlertController(title: "Spelet är slut", message: message, preferredStyle: .alert)
-        
-            alert.addAction(UIAlertAction(title: "Spela igen", style: .default, handler: { [weak self] _ in
-                self?.startNewGame()
-                
-            }))
-        
-    
-        
-       // alert.addAction(UIAlertAction(title: "Gå till startsida", style: .default, handler: { [weak self] _ in
-                
-               // self?.goToStartPage()
-           // }))
-        
-            self.present(alert, animated: true, completion: nil)
+        let currentWordNumber = gameModel.currentIndex + 1
+        let totalWordsCount = gameModel.wordManager.currentWords.count
+        wordCounterLabel.text = "\(currentWordNumber)/\(totalWordsCount)"
     }
     
+    func finishGame() {
+        gameModel.saveHighScore()
+        //implement logic to what happens when the word list is finished
+        let message = "Spelet är slut! Din poäng blev \(gameModel.score)."
+        let alert = UIAlertController(title: "Spelet är slut", message: message, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Spela igen", style: .default, handler: { [weak self] _ in
+            self?.gameModel.resetGame()
+            self?.startNewGame()
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Gå till startsida", style: .default, handler: { [weak self] _ in
+            self?.goToStartPage()
+            
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func goToStartPage() {
+        //self.navigationController?.popToRootViewController(animated: true)
+        
+        if let navigationController = self.navigationController {
+            navigationController.popToRootViewController(animated: true)
+        } else {
+            // Ako je GameViewController prezentovan modally
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
     
 }
 
