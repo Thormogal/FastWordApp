@@ -15,7 +15,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var pointsCounterLabel: UILabel!
     @IBOutlet weak var wordCounterLabel: UILabel!
     
-    let gameTimer = PreciseGameTimer(seconds: 5)
+    let gameTimer = PreciseGameTimer(seconds: 10)
     let gameModel = GameModel()
     
     override func viewDidLoad() {
@@ -31,16 +31,13 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             self?.timerDidFinish()
             
         }
-        
-        
+        gameTimer.timeUpdate = { [weak self] timeLeft in
+            self?.timerLabel.text = "\(timeLeft)"}
     }
-    
-    
-    
-    
-    
+  
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        showStartGameAlert()
         writeWordTextfield.becomeFirstResponder()
     }
     
@@ -52,10 +49,20 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     func startNewGame() {
         let firstWord = gameModel.startNewGame()
         writeThisWordLabel.text = firstWord
-        gameTimer.startTimer()
         updateWordCounterLabel()
         cleanInput()
     }
+    
+    func showStartGameAlert() {
+        let alert = UIAlertController(title: "Are you ready?", message: "Press Ok to start the game.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+            self?.startNewGame()
+            self?.gameTimer.startTimer()
+        }))
+
+        self.present(alert, animated: true)
+    }
+
 
     
     //checks user input and compares it to the word that is shown on the screen.
