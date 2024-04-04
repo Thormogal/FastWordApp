@@ -5,8 +5,6 @@
 //  Created by Ina Burström on 2024-03-28.
 //
 
-//TODO: 1. Uppdatera så att när tiden är ute så säger alerten poängen du fick. 
-
 import UIKit
 
 class GameViewController: UIViewController, UITextFieldDelegate {
@@ -51,7 +49,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     func startNewGame() {
         gameModel.resetGame()
-        let initialTime = gameTimer.totalSeconds // Använd det initiala värdet från PreciseGameTimer
+        let initialTime = gameTimer.totalSeconds
             timerLabel.text = "\(initialTime)"
         let firstWord = gameModel.startNewGame()
         writeThisWordLabel.text = firstWord
@@ -98,7 +96,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     func timerDidFinish() {
         // show an alert to the user
         gameModel.score = max(gameModel.score - 1, 0)   // // Decrease score but not under zero
-        let alert = UIAlertController(title: "Time's Up!", message: "Too slow, you got 0 points", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Time's Up!", message: "Too slow, you got -1 points", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
             // proceed to next word when "OK" is pressed.
             self?.increaseIndex()
@@ -149,7 +147,6 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         if let navigationController = self.navigationController {
             navigationController.popToRootViewController(animated: true)
         } else {
-            // Ako je GameViewController prezentovan modally
             self.dismiss(animated: true, completion: nil)
         }
     }
