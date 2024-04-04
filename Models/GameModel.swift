@@ -12,12 +12,10 @@ protocol GameModelDelegate: AnyObject {
 }
 
 class GameModel {
-    //var score = 0
     weak var delegate: GameModelDelegate?
     var wordManager = WordManager()
     var currentIndex = 0
     var timeTakenList: [Int] = []
-    
     
     var score: Int = 0 {
         didSet {
@@ -51,8 +49,6 @@ class GameModel {
         score = 0
         currentIndex = 0
         timeTakenList = []
-        // shuffleWords()
-        
     }
     
     
