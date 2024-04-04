@@ -15,6 +15,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var pointsCounterLabel: UILabel!
     @IBOutlet weak var wordCounterLabel: UILabel!
     
+    @IBOutlet weak var stackView: UIStackView!
     let gameTimer = PreciseGameTimer()
     let gameModel = GameModel()
     
@@ -34,12 +35,24 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         gameTimer.timeUpdate = { [weak self] timeLeft in
             self?.timerLabel.text = "\(timeLeft)"}
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showStartGameAlert()
         writeWordTextfield.becomeFirstResponder()
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        stackView.spacing = 50
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+        stackView.spacing = 100
     }
     
     
