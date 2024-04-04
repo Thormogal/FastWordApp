@@ -111,6 +111,8 @@ class LeaderboardController: UITableViewController {
             cell.rankingLabel.textColor = .bronze
             cell.scoreLabel.textColor = .bronze
         default: // Every other placing
+            cell.rankingLabel.textColor = .gray
+            cell.scoreLabel.textColor = .gray
             break
         }
         
