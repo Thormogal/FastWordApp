@@ -10,17 +10,13 @@ import Foundation
 class PreciseGameTimer {
     var startTime: Date?
     var timer: Timer?
-    var totalSeconds: Int
+    var totalSeconds: Int = 10
     var timeUpdate: ((Int) -> Void)?
     var completion: (() -> Void)?
     
     var timeLeft: Int {
         guard let startTime = startTime else { return totalSeconds }
         return totalSeconds - Int(-startTime.timeIntervalSinceNow)
-    }
-    
-    init (seconds: Int) {
-        self.totalSeconds = seconds
     }
     
     func startTimer() {

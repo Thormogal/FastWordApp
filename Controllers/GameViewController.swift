@@ -5,10 +5,6 @@
 //  Created by Ina Burström on 2024-03-28.
 //
 
-//TODO: 1. Vid spela igen så startar inte timern från noll,
-//TODO: 2. Vid start av spel och alert så shufflar den på nytt.
-//TODO: 3. Skriv ut rätt lista i leaderboard
-
 import UIKit
 
 class GameViewController: UIViewController, UITextFieldDelegate {
@@ -19,7 +15,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var pointsCounterLabel: UILabel!
     @IBOutlet weak var wordCounterLabel: UILabel!
     
-    let gameTimer = PreciseGameTimer(seconds: 10)
+    let gameTimer = PreciseGameTimer()
     let gameModel = GameModel()
     
     override func viewDidLoad() {
@@ -37,6 +33,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         }
         gameTimer.timeUpdate = { [weak self] timeLeft in
             self?.timerLabel.text = "\(timeLeft)"}
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,6 +49,8 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     func startNewGame() {
         gameModel.resetGame()
+        let initialTime = gameTimer.totalSeconds
+            timerLabel.text = "\(initialTime)"
         let firstWord = gameModel.startNewGame()
         writeThisWordLabel.text = firstWord
         updateWordCounterLabel()
@@ -61,7 +60,6 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     func showStartGameAlert() {
         let alert = UIAlertController(title: "Are you ready?", message: "Press Ok to start the game.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
-            self?.startNewGame()
             self?.gameTimer.startTimer()
         }))
         
@@ -97,8 +95,8 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     func timerDidFinish() {
         // show an alert to the user
-        gameModel.score = max(gameModel.score - 1, 0)   // // Minska poängen men inte under 0
-        let alert = UIAlertController(title: "Time's Up!", message: "Too slow, you got 0 points", preferredStyle: .alert)
+        gameModel.score = max(gameModel.score - 1, 0)   // // Decrease score but not under zero
+        let alert = UIAlertController(title: "Time's Up!", message: "Too slow, you got -1 points", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
             // proceed to next word when "OK" is pressed.
             self?.increaseIndex()
@@ -116,8 +114,6 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         gameModel.increaseIndex()
     }
     
-    
-    
     func updateWordCounterLabel() {
         let currentWordNumber = gameModel.currentIndex + 1
         let totalWordsCount = gameModel.wordManager.currentWords.count
@@ -133,6 +129,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         alert.addAction(UIAlertAction(title: "Spela igen", style: .default, handler: { [weak self] _ in
             self?.gameModel.resetGame()
             self?.startNewGame()
+            self?.showStartGameAlert()
             
         }))
         
@@ -150,7 +147,6 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         if let navigationController = self.navigationController {
             navigationController.popToRootViewController(animated: true)
         } else {
-            // Ako je GameViewController prezentovan modally
             self.dismiss(animated: true, completion: nil)
         }
     }
