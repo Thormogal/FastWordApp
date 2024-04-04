@@ -82,7 +82,7 @@ class LeaderboardController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return min(highScores.count, 10) //maximum number of rows in tableView
+        return min(highScores.count, 50) //maximum number of rows in tableView
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
