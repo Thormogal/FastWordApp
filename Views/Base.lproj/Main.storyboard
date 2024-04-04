@@ -129,6 +129,7 @@
                     <navigationItem key="navigationItem" id="GKn-1V-15N"/>
                     <connections>
                         <outlet property="pointsCounterLabel" destination="ed0-X3-aUl" id="TPB-30-XVx"/>
+                        <outlet property="stackView" destination="CYz-8J-9Gu" id="756-4h-2L7"/>
                         <outlet property="timerLabel" destination="two-8V-whg" id="pnA-MU-npw"/>
                         <outlet property="wordCounterLabel" destination="tio-a3-uGR" id="jIi-bw-Ygt"/>
                         <outlet property="writeThisWordLabel" destination="qAp-9F-sYw" id="ww0-Ov-zyE"/>
