@@ -60,7 +60,7 @@ class LeaderboardController: UITableViewController {
         return backgroundView
     }
     
-    //create an additional cell without information above the first cell
+    // Create an additional cell without information above the first cell
     func createSpacingView() -> UIView {
         let spacingView = UIView()
         spacingView.backgroundColor = .clear
@@ -82,7 +82,7 @@ class LeaderboardController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return min(highScores.count, 50) //maximum number of rows in tableView
+        return min(highScores.count, 50) // Maximum number of rows in tableView
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

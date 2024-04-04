@@ -8,15 +8,15 @@
 import UIKit
 
 class StartPageController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
     @IBAction func leaderboardButtonTapped(_ sender: UIButton) {
-            let leaderboardVC = LeaderboardController(nibName: "LeaderboardView", bundle: nil)
-            self.present(leaderboardVC, animated: true, completion: nil)
+        let leaderboardVC = LeaderboardController(nibName: "LeaderboardView", bundle: nil)
+        self.present(leaderboardVC, animated: true, completion: nil)
     }
     
 }

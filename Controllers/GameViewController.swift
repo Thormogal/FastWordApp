@@ -36,9 +36,9 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             self?.timerLabel.text = "\(timeLeft)"}
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,20 +50,15 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     @objc func keyboardWillShow(_ notification: Notification) {
         stackView.spacing = 50
     }
-
+    
     @objc func keyboardWillHide(_ notification: Notification) {
         stackView.spacing = 100
     }
     
-    
-    //func goToStartPage() {
-    //      self.navigationController?.popToRootViewController(animated: true)
-    //}
-    
     func startNewGame() {
         gameModel.resetGame()
         let initialTime = gameTimer.totalSeconds
-            timerLabel.text = "\(initialTime)"
+        timerLabel.text = "\(initialTime)"
         let firstWord = gameModel.startNewGame()
         writeThisWordLabel.text = firstWord
         updateWordCounterLabel()
@@ -79,9 +74,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         self.present(alert, animated: true)
     }
     
-    
-    
-    //checks user input and compares it to the word that is shown on the screen.
+    // Checks user input and compares it to the word that is shown on the screen.
     @objc func textFieldDidChange(_ textField: UITextField) {
         guard let answer = textField.text else { return }
         
@@ -100,22 +93,19 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             writeThisWordLabel.text = nextWord
             updateWordCounterLabel()
             cleanInput()
-            gameTimer.startTimer() // resets the timer for the upcoming word
+            gameTimer.startTimer()
         } else {
             finishGame()
         }
     }
     
     func timerDidFinish() {
-        // show an alert to the user
-        gameModel.score = max(gameModel.score - 1, 0)   // // Decrease score but not under zero
+        gameModel.score = max(gameModel.score - 1, 0)  // Decrease score but not under zero
         let alert = UIAlertController(title: "Time's Up!", message: "Too slow, you got -1 points", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
-            // proceed to next word when "OK" is pressed.
             self?.increaseIndex()
             self?.proceedToNextWord()
         }))
-        
         present(alert, animated: true)
     }
     
@@ -135,7 +125,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     func finishGame() {
         gameModel.saveHighScore()
-        //implement logic to what happens when the word list is finished
+        
         let message = "Spelet är slut! Din poäng blev \(gameModel.score)."
         let alert = UIAlertController(title: "Spelet är slut", message: message, preferredStyle: .alert)
         
@@ -143,27 +133,20 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             self?.gameModel.resetGame()
             self?.startNewGame()
             self?.showStartGameAlert()
-            
         }))
-        
         alert.addAction(UIAlertAction(title: "Gå till startsida", style: .default, handler: { [weak self] _ in
             self?.goToStartPage()
-            
         }))
-        
         self.present(alert, animated: true, completion: nil)
     }
     
     func goToStartPage() {
-        //self.navigationController?.popToRootViewController(animated: true)
-        
         if let navigationController = self.navigationController {
             navigationController.popToRootViewController(animated: true)
         } else {
             self.dismiss(animated: true, completion: nil)
         }
     }
-    
 }
 
 extension GameViewController: GameModelDelegate {
